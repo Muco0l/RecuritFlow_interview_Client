@@ -1,38 +1,66 @@
-<img src="./.github/assets/app-icon.png" alt="Voice Assistant App Icon" width="100" height="100">
+# RecruitFlow-Frontend
 
-# Web Voice Assistant
+🎥 **RecruitFlow-Frontend** is the frontend interface for **RecruitFlow-Interviews**, a live AI-powered interview simulation platform that connects candidates with an intelligent virtual interviewer using WebRTC and large language models in real time.
 
-This is a starter template for [LiveKit Agents](https://docs.livekit.io/agents) that provides a simple voice interface using the [LiveKit JavaScript SDK](https://github.com/livekit/client-sdk-js). It supports [voice](https://docs.livekit.io/agents/start/voice-ai), [transcriptions](https://docs.livekit.io/agents/build/text/), and [virtual avatars](https://docs.livekit.io/agents/integrations/avatar).
+This frontend allows users to upload resumes, select job roles, participate in live interviews, and download a detailed PDF report afterward.
 
-This template is built with Next.js and is free for you to use or modify as you see fit.
-s
-![App screenshot](/.github/assets/frontend-screenshot.jpeg)
+---
+![Banner](final.png)
 
-## Getting started
+## 🌐 Live Interview Simulation Flow
 
-> [!TIP]
-> If you'd like to try this application without modification, you can deploy an instance in just a few clicks with [LiveKit Cloud Sandbox](https://cloud.livekit.io/projects/p_/sandbox/templates/voice-assistant-frontend).
+1️⃣ JD Parser & Flow Generator
+↓
+2️⃣ Interview Agent (GPT-4o Realtime)
+↓
+3️⃣ Report Agent (Transcript & PDF Generator)
+↓
+🧑‍💻 Candidate UI (This Repo - Next.js)
 
-Run the following command to automatically clone this template.
+---
 
-```bash
-lk app create --template voice-assistant-frontend
-```
 
-Then run the app with:
+- Both the **Interview Agent** and **Candidate UI** connect to **LiveKit Cloud** via WebRTC.
+- The **JD Parser** prepares a dynamic interview flow.
+- The **Interview Agent** uses GPT-4o (streaming) to conduct the interview.
+- After the interview, the **Report Agent** processes the transcript and sends a PDF report back to the frontend.
 
-```bash
-pnpm install
-pnpm dev
-```
+---
 
-And open http://localhost:3000 in your browser.
+## 🧠 Key Features
 
-You'll also need an agent to speak with. Try our [Voice AI Quickstart](https://docs.livekit.io/start/voice-ai) for the easiest way to get started.
+- 📎 Resume Upload for personalized interviews  
+- 📝 Job Title & Description input for custom question paths  
+- 📡 Live WebRTC audio/video session with an AI interviewer  
+- 🔁 Real-time interaction via GPT-4o streaming  
+- 📄 Post-interview PDF report generation and download  
+- 🎨 Clean, responsive UI built with TailwindCSS  
 
-> [!NOTE]
-> If you need to modify the LiveKit project credentials used, you can edit `.env.local` (copy from `.env.example` if you don't have one) to suit your needs.
+---
 
-## Contributing
+## ⚙️ Tech Stack
 
-This template is open source and we welcome contributions! Please open a PR or issue through GitHub, and don't forget to join us in the [LiveKit Community Slack](https://livekit.io/join-slack)!
+- **Next.js (React App Router)**
+- **TypeScript**
+- **TailwindCSS**
+- **LiveKit React SDK**
+- **Axios** for backend API communication
+- **LiveKit Cloud** for WebRTC signaling and media routing
+
+---
+## 🔌 WebRTC Flow
+
+- Frontend uses LiveKit API to **create and join a room**.
+- Room credentials are securely passed to the backend.
+- Backend AI agent joins the room as a peer.
+- Audio/Video is streamed via LiveKit between the candidate and the AI.
+- All conversation is logged and post-processed for reports.
+
+---
+
+## Connect To the Agent
+> **Important:**  
+> You must run the backend agents from the [RecruitFlow-Agents](https://github.com/Muco0l/RecuritFlow_Interview_Agents.git)repository before using this frontend.
+
+
+
